@@ -1,10 +1,10 @@
 function App() {
   return (
     <>
-      <title>To Do List</title>
+      <title>To-Do List</title>
       <div className='container min-h-screen font-sans text-gray-800 space-y-8'>
         <div className='mt-8 flex justify-between'>
-          <h1 className='text-xl font-bold'>To Do List</h1>
+          <h1 className='text-xl font-bold'>To-Do List</h1>
           <div className='flex gap-3'>
             <button className='py-1 px-3 transition-colors duration-200 bg-sky-600 text-white text-sm font-semibold rounded-md hover:bg-sky-700'>
               Login
@@ -29,7 +29,7 @@ function App() {
         </form>
         <div className='space-y-3'>
           <div className='flex justify-between items-center gap-3 py-4 px-5 bg-sky-100 rounded-md'>
-            <h3>To Do Title 1</h3>
+            <h3>To-Do Title 1</h3>
             <div>
               <button className='size-4 transition-colors duration-200 fill-red-500 hover:fill-red-600'>
                 <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'>
@@ -39,7 +39,7 @@ function App() {
             </div>
           </div>
           <div className='flex justify-between items-center gap-3 py-4 px-5 bg-sky-100 rounded-md'>
-            <h3>To Do Title 2 with very very very very long description</h3>
+            <h3>To-Do Title 2 with very very very very long description</h3>
             <div>
               <button className='size-4 transition-colors duration-200 fill-red-500 hover:fill-red-600'>
                 <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'>
@@ -49,7 +49,7 @@ function App() {
             </div>
           </div>
           <div className='flex justify-between items-center gap-3 py-4 px-5 bg-sky-100 rounded-md'>
-            <h3>To Do Title 3</h3>
+            <h3>To-Do Title 3</h3>
             <div>
               <button className='size-4 transition-colors duration-200 fill-red-500 hover:fill-red-600'>
                 <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'>
@@ -59,7 +59,7 @@ function App() {
             </div>
           </div>
           <div className='flex justify-between items-center gap-3 py-4 px-5 bg-sky-100 rounded-md'>
-            <h3>To Do Title 4</h3>
+            <h3>To-Do Title 4</h3>
             <div>
               <button className='size-4 transition-colors duration-200 fill-red-500 hover:fill-red-600'>
                 <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'>
@@ -69,7 +69,7 @@ function App() {
             </div>
           </div>
           <div className='flex justify-between items-center gap-3 py-4 px-5 bg-sky-100 rounded-md'>
-            <h3>To Do Title 5</h3>
+            <h3>To-Do Title 5</h3>
             <div>
               <button className='size-4 transition-colors duration-200 fill-red-500 hover:fill-red-600'>
                 <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'>
