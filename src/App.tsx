@@ -25,9 +25,9 @@ function App() {
     setTitle("");
   };
 
-  const removeTodo = (title: string) => {
-    if (!window.confirm(`Are you sure you want to delete "${title}"?`)) return;
-    setTodos(todos.filter((todo) => todo !== title));
+  const removeTodo = (indexToRemove: number) => {
+    if (!window.confirm(`Are you sure you want to delete "${todos[indexToRemove]}"?`)) return;
+    setTodos(todos.filter((_, index) => index !== indexToRemove));
   };
 
   return (
