@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState, useCallback, useMemo } from "react";
 import Modal from "./components/Modal";
 import Header from "./components/Header";
 import Form from "./components/Form";
@@ -6,39 +6,50 @@ import TodoList from "./components/TodoList";
 
 function App() {
   const [title, setTitle] = useState("");
-  const [todos, setTodos] = useState<string[]>([
-    "To Do Title 1",
-    "To Do Title 2 with very very very very long description",
-    "To Do Title 3",
-    "To Do Title 4",
-    "To Do Title 5",
-  ]);
-  const [show, setShow] = useState(false);
+  const [openedModal, setOpenedModal] = useState<"register" | "login" | null>(null);
 
-  const addTodo = (e: React.FormEvent<HTMLFormElement>): void => {
-    e.preventDefault();
-    if (!title) {
-      alert("Title is required");
-      return;
-    }
-    setTodos([...todos, title]);
-    setTitle("");
-  };
+  const storedTodos = useMemo(() => {
+    const saved = localStorage.getItem("todos");
+    return saved ? JSON.parse(saved) : [];
+  }, []);
 
-  const removeTodo = (indexToRemove: number) => {
-    if (!window.confirm(`Are you sure you want to delete "${todos[indexToRemove]}"?`)) return;
-    setTodos(todos.filter((_, index) => index !== indexToRemove));
-  };
+  const [todos, setTodos] = useState<string[]>(storedTodos);
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
+
+  const addTodo = useCallback(
+    (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      if (!title.trim()) {
+        alert("Title is required");
+        return;
+      }
+      setTodos((prev) => [...prev, title.trim()]);
+      setTitle("");
+    },
+    [title]
+  );
+
+  const removeTodo = useCallback(
+    (indexToRemove: number) => {
+      if (window.confirm(`Are you sure you want to delete "${todos[indexToRemove]}"?`)) {
+        setTodos((prev) => prev.filter((_, index) => index !== indexToRemove));
+      }
+    },
+    [todos]
+  );
 
   return (
     <>
       <title>To-Do List</title>
       <div className="container min-h-screen font-sans text-gray-800 space-y-8">
-        <Header setShow={setShow} />
+        <Header setOpenedModal={setOpenedModal} />
         <Form addTodo={addTodo} title={title} setTitle={setTitle} />
         <TodoList todos={todos} removeTodo={removeTodo} />
       </div>
-      {show && <Modal setShow={setShow} />}
+      {openedModal && <Modal openedModal={openedModal} setOpenedModal={setOpenedModal} />}
     </>
   );
 }
